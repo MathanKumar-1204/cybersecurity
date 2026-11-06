@@ -7,21 +7,21 @@ from app.routes.api import get_fixed_jd_text, FIXED_JOB_TITLE
 
 
 def test_fixed_jd_loaded_from_docx():
-    """Verify that the fixed JD text correctly reflects AI_Application_Developer_JD.docx."""
+    """Verify that the fixed JD text correctly reflects Cybersecurity_Solutions_Lead_JD.docx."""
     jd_text = get_fixed_jd_text()
-    assert "AI Application Developer" in jd_text
-    assert "Fresh Graduates" in jd_text
-    assert "What You Will Do" in jd_text
+    assert "Cybersecurity Solutions Lead" in jd_text
+    assert "Technical Delivery and Presales" in jd_text
+    assert "Key Responsibilities" in jd_text
 
 
 def test_create_interview_saves_resume_and_fixes_job_details(client, sample_pdf_bytes):
-    """Verify resume binary is saved in base64 and role is fixed as 'AI developer'."""
+    """Verify resume binary is saved in base64 and role is fixed as 'Cybersecurity Solutions Lead'."""
     resume_file = (io.BytesIO(sample_pdf_bytes), "candidate_resume.pdf")
 
     res = client.post("/api/interviews", data={
         "candidate_name": "Maya Chen",
         "candidate_email": "maya.chen@example.com",
-        "job_title": "AI developer",
+        "job_title": "Cybersecurity Solutions Lead",
         "resume_file": resume_file
     }, content_type="multipart/form-data")
 
@@ -35,8 +35,8 @@ def test_create_interview_saves_resume_and_fixes_job_details(client, sample_pdf_
     from app.extensions import db
     interview = db.session.get(Interview, interview_id)
     assert interview is not None
-    assert interview.job_title == "AI developer"
-    assert "AI Application Developer" in interview.jd_text
+    assert interview.job_title == "Cybersecurity Solutions Lead"
+    assert "Cybersecurity Solutions Lead" in interview.jd_text
     assert interview.resume_data_base64 is not None
     assert len(interview.resume_data_base64) > 10
     assert interview.llm_provider == "openai"
@@ -55,7 +55,7 @@ def test_landing_page_renders_single_page_form(client):
     assert res.status_code == 200
     html = res.get_data(as_text=True)
     assert "Viraya Company's Interview AI Bot" in html
-    assert "AI developer" in html
+    assert "Cybersecurity Solutions Lead" in html
     assert 'name="candidate_name"' in html
     assert 'name="candidate_email"' in html
     assert 'name="resume_file"' in html
@@ -71,7 +71,7 @@ def test_admin_dashboard_renders_resume_button(unauth_client, sample_pdf_bytes):
     res = unauth_client.post("/api/interviews", data={
         "candidate_name": "Arjun Kumar",
         "candidate_email": "arjun.kumar.unique@example.com",
-        "job_title": "AI developer",
+        "job_title": "Cybersecurity Solutions Lead",
         "resume_file": resume_file
     }, content_type="multipart/form-data")
     assert res.status_code == 201
@@ -85,7 +85,7 @@ def test_admin_dashboard_renders_resume_button(unauth_client, sample_pdf_bytes):
     # Resume button should be present in actions
     assert "Resume" in html
     assert "/resume" in html
-    assert "AI developer" in html
+    assert "Cybersecurity Solutions Lead" in html
 
 
 def test_create_interview_succeeds_with_mongodb_even_if_sqlite_fails(client, sample_pdf_bytes):
@@ -95,11 +95,11 @@ def test_create_interview_succeeds_with_mongodb_even_if_sqlite_fails(client, sam
     resume_file = (io.BytesIO(sample_pdf_bytes), "mongodb_primary_resume.pdf")
 
     # Mock db.session.commit to simulate SQLite OperationalError
-    with patch("app.extensions.db.session.commit", side_effect=Exception("table interviews has no column named resume_data_base64")):
+    with patch("app.extensions.db.session.commit", side_effect=Exception("table cybersecurity_interviews has no column named resume_data_base64")):
         res = client.post("/api/interviews", data={
             "candidate_name": "Mongo First Candidate",
             "candidate_email": "mongo_candidate@example.com",
-            "job_title": "AI developer",
+            "job_title": "Cybersecurity Solutions Lead",
             "resume_file": resume_file
         }, content_type="multipart/form-data")
 

@@ -27,16 +27,16 @@ CORE PLANNING REQUIREMENTS:
 2. Strict Question Sequencing & Situational Questioning Rules:
    - QUESTION 1 (FIRST QUESTION):
      The first question MUST ask the candidate directly about their CV and hands-on background:
-     "Could you please walk me through your CV, highlighting the key AI tools and projects you have built and your personal contribution to each?"
+     "Could you please walk me through your CV, highlighting the key cybersecurity assessments, VAPT projects, or customer engagements you have personally delivered and your specific role in each?"
    - ALL SUBSEQUENT TECHNICAL & DOMAIN QUESTIONS:
      Every subsequent question MUST be a practical, realistic scenario-based question starting with or phrased like:
      "What would you do in this situation..." or "How would you handle this scenario..."
-     These questions must test practical problem-solving for an AI developer, such as:
-     * Handling LLM API rate limits, timeouts, or cost spikes in production.
-     * Connecting LLMs to external APIs/databases when outputs contain hallucinations or malformed JSON.
-     * Choosing between prompt engineering, RAG, open-source models, or fine-tuning under latency constraints.
-     * Debugging automated AI workflows when intermediate steps fail.
-     * Handling noisy user inputs or edge cases in working prototypes.
+     These questions must test practical problem-solving for a Cybersecurity Solutions Lead across technical delivery and presales, such as:
+     * Scoping VAPT engagements and handling technical objections during a customer discovery call.
+     * Discovering a critical vulnerability or out-of-scope system during an active penetration test.
+     * Conducting cloud security reviews (e.g., AWS/Azure/GCP IAM misconfigurations, exposed storage) and communicating business risk to non-technical stakeholders.
+     * Structuring a clear remediation roadmap when a client has limited engineering bandwidth.
+     * Building repeatable assessment methodologies, reports, and delivery automation.
    - For every question, include practical "expected_evidence" and actionable "follow_up_guidance" (how to probe if the candidate is vague or uses "we" instead of "I").
 
 3. Strict JSON Output Specification:
@@ -61,7 +61,7 @@ You MUST respond with a single, valid, raw JSON object matching the EXACT field 
   "required_competencies": [
     {{
       "id": "dimension_slug",
-      "name": "Competency Name (e.g. LLM Application Architecture)",
+      "name": "Competency Name (e.g. VAPT & Application Security)",
       "weight": 25,
       "difficulty": "{difficulty}",
       "objective": "What this dimension verifies",
@@ -85,52 +85,52 @@ You MUST respond with a single, valid, raw JSON object matching the EXACT field 
       "questions": [
         {{
           "id": "q1",
-          "question_text": "Could you walk me through your CV, highlighting the key AI tools and projects you have built and your personal contribution to each?",
+          "question_text": "Could you walk me through your CV, highlighting the key cybersecurity assessments, VAPT projects, and customer engagements you have personally delivered?",
           "competency_id": "dimension_slug",
-          "expected_evidence": "Clear explanation of personal contribution, specific AI tools used, and functioning projects built",
-          "follow_up_guidance": "Probe for specific individual ownership vs group work"
+          "expected_evidence": "Clear explanation of personal contribution, specific VAPT methodologies, tools used, and customer-facing delivery",
+          "follow_up_guidance": "Probe for specific individual ownership vs team work"
         }}
       ]
     }},
     {{
       "section_id": "situational_scenarios_1",
-      "title": "Situational Scenario: LLM Integration & Production Reliability",
+      "title": "Situational Scenario: Presales Scoping & Handling Technical Objections",
       "target_duration_minutes": 4,
       "questions": [
         {{
           "id": "q2",
-          "question_text": "What would you do in this situation: You are connecting an LLM to an external database or API, but the model occasionally outputs invalid JSON or hallucinates query parameters. How would you solve this?",
+          "question_text": "What would you do in this situation: During a discovery call with a prospective client's CTO, they express skepticism about the need for an external API security assessment, arguing their internal WAF is sufficient. How would you handle this objection and scope the engagement?",
           "competency_id": "dimension_slug",
-          "expected_evidence": "Validation schemas (e.g. Pydantic), retry logic, few-shot prompting, defensive parsing",
-          "follow_up_guidance": "Ask how they would handle catastrophic failures in production"
+          "expected_evidence": "Explaining business logic flaws bypassed by WAFs, OWASP API Top 10 examples, phased scoping, demonstrating ROI and risk mitigation",
+          "follow_up_guidance": "Ask how they price and estimate effort for the proposal"
         }}
       ]
     }},
     {{
       "section_id": "situational_scenarios_2",
-      "title": "Situational Scenario: Workflow Automation & Performance Bottlenecks",
+      "title": "Situational Scenario: Active VAPT Triage & Out-of-Scope Discovery",
       "target_duration_minutes": 4,
       "questions": [
         {{
           "id": "q3",
-          "question_text": "What would you do in this situation: A prototype automation you built is experiencing high latency and API rate limits during peak usage. How would you diagnose and optimize this workflow?",
+          "question_text": "What would you do in this situation: While conducting an authorized penetration test on a web application, you uncover an unauthenticated remote code execution flaw that points to a database containing live customer PII not listed in the agreed scope. How do you respond?",
           "competency_id": "dimension_slug",
-          "expected_evidence": "Caching, asynchronous calls, batching, lightweight fallback models, queueing",
-          "follow_up_guidance": "Ask about cost vs speed trade-offs"
+          "expected_evidence": "Immediate testing pause on that component, adherence to written rules of engagement, secure communication protocol with client emergency contact, risk containment without data exfiltration",
+          "follow_up_guidance": "Ask how they document and report this in the final deliverables"
         }}
       ]
     }},
     {{
       "section_id": "situational_scenarios_3",
-      "title": "Situational Scenario: Edge Cases & User Feedback Iteration",
+      "title": "Situational Scenario: Cloud Security Assessment & Remediation Roadmap",
       "target_duration_minutes": 3,
       "questions": [
         {{
           "id": "q4",
-          "question_text": "What would you do in this situation: Users report that an AI tool you built produces inconsistent or unhelpful responses on edge cases that weren't in your initial test dataset. How would you approach fixing and validating this?",
+          "question_text": "What would you do in this situation: A client requests a cloud security review of their AWS/Azure environment before a compliance audit, but their development team has limited capacity to fix identified findings. How do you prioritize findings and guide remediation?",
           "competency_id": "dimension_slug",
-          "expected_evidence": "Logging inputs, creating test evaluation sets, iterative prompt refinement, regression testing",
-          "follow_up_guidance": "Ask how they ensure changes don't break existing good responses"
+          "expected_evidence": "Risk-based severity scoring (CVSS / business impact), quick-win security posture fixes (IAM, MFA, public bucket closures), compensatory controls, executive vs technical reporting",
+          "follow_up_guidance": "Ask how they ensure recurring business or ongoing compliance monitoring"
         }}
       ]
     }},
@@ -141,9 +141,9 @@ You MUST respond with a single, valid, raw JSON object matching the EXACT field 
       "questions": [
         {{
           "id": "q5",
-          "question_text": "Do you have any questions for me regarding this role or our AI initiatives at Viraya?",
+          "question_text": "Do you have any questions for me regarding this role or our cybersecurity solutions business at Viraya?",
           "competency_id": "dimension_slug",
-          "expected_evidence": "Genuine interest in Viraya, technical curiosity, thoughtful questions",
+          "expected_evidence": "Genuine interest in Viraya's cybersecurity offerings, commercial curiosity, thoughtful questions",
           "follow_up_guidance": "Answer briefly and thank the candidate"
         }}
       ]

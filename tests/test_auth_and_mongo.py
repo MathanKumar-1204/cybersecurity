@@ -59,7 +59,7 @@ def test_unauthenticated_candidate_landing_page(unauth_client):
     res = unauth_client.get("/")
     assert res.status_code == 200
     assert b"Viraya Company" in res.data
-    assert b"AI developer" in res.data
+    assert b"Cybersecurity Solutions Lead" in res.data
 
     # Unauthenticated user visiting /admin is redirected to login
     res = unauth_client.get("/admin/", follow_redirects=False)
@@ -117,7 +117,7 @@ def test_dashboard_user_isolation(client, sample_pdf_bytes):
     res = client.post("/api/interviews", data={
         "candidate_name": "User 1 Candidate",
         "candidate_email": "user1_unique_test@example.com",
-        "job_title": "AI developer",
+        "job_title": "Cybersecurity Solutions Lead",
         "duration_minutes": "15",
         "difficulty": "Intermediate",
         "language": "English",

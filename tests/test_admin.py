@@ -66,7 +66,7 @@ def test_admin_interviews_ordered_new_to_old(unauth_client, app):
 
         i1 = Interview(
             candidate_name="Candidate Oldest",
-            job_title="AI developer",
+            job_title="Cybersecurity Solutions Lead",
             jd_text="Job Description 1",
             resume_text="Resume 1",
             created_at=t1,
@@ -74,7 +74,7 @@ def test_admin_interviews_ordered_new_to_old(unauth_client, app):
         )
         i2 = Interview(
             candidate_name="Candidate Middle",
-            job_title="AI developer",
+            job_title="Cybersecurity Solutions Lead",
             jd_text="Job Description 2",
             resume_text="Resume 2",
             created_at=t2,
@@ -82,7 +82,7 @@ def test_admin_interviews_ordered_new_to_old(unauth_client, app):
         )
         i3 = Interview(
             candidate_name="Candidate Newest",
-            job_title="AI developer",
+            job_title="Cybersecurity Solutions Lead",
             jd_text="Job Description 3",
             resume_text="Resume 3",
             created_at=t3,
@@ -121,7 +121,7 @@ def test_admin_delete_interview_endpoint(unauth_client, app):
     with app.app_context():
         item = Interview(
             candidate_name="Delete Candidate",
-            job_title="AI developer",
+            job_title="Cybersecurity Solutions Lead",
             jd_text="Job Description to delete",
             resume_text="Resume to delete",
             status=InterviewStatus.DRAFT

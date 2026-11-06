@@ -20,7 +20,7 @@
     <!-- Role Information Pill -->
     <div style="margin-top: 1.25rem; display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg-muted); border: 1px solid var(--border-color); padding: 0.35rem 0.85rem; border-radius: var(--radius-full); font-size: 0.85rem;">
       <span style="color: var(--text-muted); font-weight: 500;">Position:</span>
-      <span style="font-weight: 700; color: var(--primary);">AI developer</span>
+      <span style="font-weight: 700; color: var(--primary);">{{ fixed_role or 'Cybersecurity Solutions Lead' }}</span>
       <span style="color: var(--border-color);">|</span>
       <span style="color: var(--text-secondary);">15 Min Spoken Technical Assessment</span>
     </div>
@@ -368,7 +368,7 @@
       formData.append("candidate_email", email);
       formData.append("resume_file", file);
       formData.append("captcha", captcha);
-      formData.append("job_title", "AI developer");
+      formData.append("job_title", "{{ fixed_role or 'Cybersecurity Solutions Lead' }}");
 
       try {
         // Step 2: Create interview session

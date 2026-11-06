@@ -16,7 +16,7 @@ class InterviewStatus:
 
 
 class Interview(db.Model):
-    __tablename__ = "interviews"
+    __tablename__ = "cybersecurity_interviews"
 
     id = db.Column(db.String(36), primary_key=True, default=lambda: uuid.uuid4().hex)
     candidate_name = db.Column(db.String(150), nullable=False)
@@ -93,10 +93,10 @@ class Interview(db.Model):
 
 
 class InterviewReport(db.Model):
-    __tablename__ = "interview_reports"
+    __tablename__ = "cybersecurity_interview_reports"
 
     id = db.Column(db.String(36), primary_key=True, default=lambda: uuid.uuid4().hex)
-    interview_id = db.Column(db.String(36), db.ForeignKey("interviews.id", ondelete="CASCADE"), nullable=False, unique=True)
+    interview_id = db.Column(db.String(36), db.ForeignKey("cybersecurity_interviews.id", ondelete="CASCADE"), nullable=False, unique=True)
     
     overall_score = db.Column(db.Integer, nullable=False)  # 0 to 100
     overall_summary = db.Column(db.Text, nullable=False)
@@ -130,10 +130,10 @@ class InterviewReport(db.Model):
 
 
 class InterviewEvent(db.Model):
-    __tablename__ = "interview_events"
+    __tablename__ = "cybersecurity_interview_events"
 
     id = db.Column(db.String(36), primary_key=True, default=lambda: uuid.uuid4().hex)
-    interview_id = db.Column(db.String(36), db.ForeignKey("interviews.id", ondelete="CASCADE"), nullable=False)
+    interview_id = db.Column(db.String(36), db.ForeignKey("cybersecurity_interviews.id", ondelete="CASCADE"), nullable=False)
     event_type = db.Column(db.String(50), nullable=False)
     event_data = db.Column(db.JSON, nullable=True)
     created_at = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))

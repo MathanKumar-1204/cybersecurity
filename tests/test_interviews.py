@@ -219,7 +219,7 @@ def test_templates_render_model_and_engine_selectors(client, prepared_interview)
     setup_html = setup_res.get_data(as_text=True)
     assert 'name="llm_provider"' in setup_html
     assert 'name="voice_engine"' in setup_html
-    assert 'AI developer' in setup_html
+    assert 'Cybersecurity Solutions Lead' in setup_html
 
     # Preparation page displays the active configuration
     prep_res = client.get(f"/interviews/{prepared_interview.id}")

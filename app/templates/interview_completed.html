@@ -19,7 +19,7 @@
     </h1>
 
     <p style="color: var(--text-secondary); font-size: 1rem; max-width: 540px; margin: 0 auto 2rem; line-height: 1.6;">
-      Thank you for completing your technical assessment for the <b>AI developer</b> position at <b>Viraya Company</b>. Your conversational responses and technical screening data have been safely recorded.
+      Thank you for completing your technical assessment for the <b>{{ interview.job_title or 'Cybersecurity Solutions Lead' }}</b> position at <b>Viraya Company</b>. Your conversational responses and technical screening data have been safely recorded.
     </p>
 
     <!-- Submission Details Card -->
@@ -43,7 +43,7 @@
         <div>
           <span style="font-size: 0.825rem; color: var(--text-muted);">Applied Role:</span>
           <div style="font-weight: 600; color: var(--text-main); font-size: 0.95rem;">
-            AI developer
+            {{ interview.job_title or 'Cybersecurity Solutions Lead' }}
           </div>
         </div>
         <div>

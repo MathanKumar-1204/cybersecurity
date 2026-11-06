@@ -98,19 +98,19 @@ def create_app(config_name: str = "development") -> Flask:
             try:
                 from sqlalchemy import text
                 with db.engine.connect() as conn:
-                    res = conn.execute(text("PRAGMA table_info(interviews)"))
+                    res = conn.execute(text("PRAGMA table_info(cybersecurity_interviews)"))
                     cols = [r[1] for r in res.fetchall()]
                     if cols:
                         if "llm_provider" not in cols:
-                            conn.execute(text("ALTER TABLE interviews ADD COLUMN llm_provider VARCHAR(50) DEFAULT 'gemini'"))
+                            conn.execute(text("ALTER TABLE cybersecurity_interviews ADD COLUMN llm_provider VARCHAR(50) DEFAULT 'gemini'"))
                         if "voice_engine" not in cols:
-                            conn.execute(text("ALTER TABLE interviews ADD COLUMN voice_engine VARCHAR(50) DEFAULT 'elevenlabs'"))
+                            conn.execute(text("ALTER TABLE cybersecurity_interviews ADD COLUMN voice_engine VARCHAR(50) DEFAULT 'elevenlabs'"))
                         if "user_id" not in cols:
-                            conn.execute(text("ALTER TABLE interviews ADD COLUMN user_id VARCHAR(100) DEFAULT NULL"))
+                            conn.execute(text("ALTER TABLE cybersecurity_interviews ADD COLUMN user_id VARCHAR(100) DEFAULT NULL"))
                         if "resume_data_base64" not in cols:
-                            conn.execute(text("ALTER TABLE interviews ADD COLUMN resume_data_base64 TEXT DEFAULT NULL"))
+                            conn.execute(text("ALTER TABLE cybersecurity_interviews ADD COLUMN resume_data_base64 TEXT DEFAULT NULL"))
                         if "resume_mimetype" not in cols:
-                            conn.execute(text("ALTER TABLE interviews ADD COLUMN resume_mimetype VARCHAR(100) DEFAULT NULL"))
+                            conn.execute(text("ALTER TABLE cybersecurity_interviews ADD COLUMN resume_mimetype VARCHAR(100) DEFAULT NULL"))
                         conn.commit()
             except Exception as mig_err:
                 app.logger.debug(f"Migration check skipped: {mig_err}")

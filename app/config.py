@@ -28,13 +28,13 @@ except OSError:
 
 load_dotenv(BASE_DIR / ".env")
 
-DEFAULT_DB_PATH = (INSTANCE_DIR / "interview_studio.db").as_posix()
+DEFAULT_DB_PATH = (INSTANCE_DIR / "cybersecurity_interview_studio.db").as_posix()
 raw_db_url = (
     os.getenv("DATABASE_URL", "").strip() or 
     os.getenv("POSTGRES_URL", "").strip() or 
     os.getenv("POSTGRES_URL_NON_POOLING", "").strip()
 )
-if not raw_db_url or "sqlite:///instance/" in raw_db_url or raw_db_url == "sqlite:///instance/interview_studio.db":
+if not raw_db_url or "sqlite:///instance/" in raw_db_url or "interview_studio.db" in raw_db_url:
     RESOLVED_DB_URL = f"sqlite:///{DEFAULT_DB_PATH}"
 else:
     if raw_db_url.startswith("postgres://"):
@@ -56,6 +56,7 @@ class Config:
     # MongoDB Database
     MONGO_URI = os.getenv("MONGO_URI", "").strip()
     MONGO_DB_NAME = os.getenv("MONGO_DB_NAME", "").strip() or None
+    MONGO_INTERVIEWS_COLLECTION = os.getenv("MONGO_INTERVIEWS_COLLECTION", "cybersecurity_interviews").strip()
     
     # Upload settings
     MAX_CONTENT_LENGTH = int(os.getenv("MAX_CONTENT_LENGTH", 10 * 1024 * 1024))  # 10 MB

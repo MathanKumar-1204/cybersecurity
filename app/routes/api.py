@@ -18,12 +18,12 @@ from app.extensions import db
 
 api_bp = Blueprint("api", __name__, url_prefix="/api")
 
-FIXED_JOB_TITLE = "AI developer"
-FIXED_JD_FILENAME = "AI_Application_Developer_JD.docx"
+FIXED_JOB_TITLE = "Cybersecurity Solutions Lead"
+FIXED_JD_FILENAME = "Cybersecurity_Solutions_Lead_JD.docx"
 
 
 def get_fixed_jd_text() -> str:
-    """Reads fixed Job Description from AI_Application_Developer_JD.docx."""
+    """Reads fixed Job Description from Cybersecurity_Solutions_Lead_JD.docx."""
     jd_path = BASE_DIR / FIXED_JD_FILENAME
     if jd_path.exists():
         try:
@@ -35,35 +35,48 @@ def get_fixed_jd_text() -> str:
         except Exception as e:
             print(f"[API] Notice reading docx JD: {e}")
 
-    # Fallback to exact text from AI_Application_Developer_JD.docx
+    # Fallback to exact text from Cybersecurity_Solutions_Lead_JD.docx
     return (
-        "AI Application Developer\n"
-        "Fresh Graduates | AI Tools & LLM-Assisted Development\n"
-        "Experience: Fresh graduates / 0–1 year Employment: Full-time Location: To be specified\n\n"
+        "Cybersecurity Solutions Lead\n"
+        "Technical Delivery and Presales\n"
+        "Location: India   |   Experience: 4–8 years   |   Employment: Full-time\n"
+        "Compensation: Based on experience; performance incentives where applicable\n\n"
         "About the Role\n"
-        "We are looking for fresh graduates who have already used AI tools to build something real—an application, "
-        "automation, chatbot, dashboard, website, or working prototype. You will use LLMs and AI-assisted development "
-        "tools to turn business problems into usable software, test ideas quickly, and improve solutions based on feedback. "
-        "Projects may include workflow automation, AI-powered analytics, and video intelligence; prior domain expertise is not required.\n\n"
-        "What You Will Do\n"
-        "• Build and iterate on practical AI-enabled applications, internal tools, automations, and proof-of-concepts.\n"
-        "• Use tools such as ChatGPT, Claude Code, OpenAI Codex, Cursor, or similar platforms to write, debug, and improve code.\n"
-        "• Connect LLMs, external APIs, databases, and existing open-source components into working workflows.\n"
-        "• Translate business requirements into simple prototypes, test with real inputs, and refine for reliability and usability.\n"
-        "• Create basic user interfaces, dashboards, and reports; document how the solution works and demonstrate results.\n"
-        "• Explore new AI tools independently and choose the simplest effective approach for each problem.\n\n"
-        "What We Are Looking For\n"
-        "• A graduate in Computer Science, IT, Engineering, Data Science, or a related field—or equivalent demonstrable project skills.\n"
-        "• Hands-on experience using LLMs or AI coding assistants to build at least one functioning project (academic, personal, freelance, or internship work).\n"
-        "• Basic programming ability (preferably Python or JavaScript) and confidence reading, modifying, and debugging code.\n"
-        "• Ability to work with APIs, follow technical documentation, search GitHub/open-source projects, and learn unfamiliar tools.\n"
-        "• Strong problem-solving, ownership, curiosity, and ability to clearly explain what you built and your own contribution.\n\n"
-        "Good to Have – Not Mandatory\n"
-        "• Experience with LLM APIs, prompt design, RAG, agents, workflow automation, FastAPI, Streamlit, or cloud deployment.\n"
-        "• Familiarity with computer vision or video intelligence tools such as YOLO, OpenCV, PyTorch, TensorFlow, object detection, tracking, or vision-language models.\n"
-        "• Experience shipping an end-to-end project, integrating a database, or collecting user feedback to improve an app.\n\n"
+        "We are building a cybersecurity solutions business to help companies identify vulnerabilities, strengthen their security and meet customer and compliance requirements. We are looking for a hands-on cybersecurity professional who can develop our service offerings, lead technical delivery and support customer acquisition through consultations, demonstrations and proposals.\n"
+        "Our services will include Vulnerability Assessment and Penetration Testing (VAPT), cybersecurity audits, risk and compliance management, cloud security assessments, and authorised red team exercises. We also plan to offer employee security awareness training and phishing simulations.\n\n"
+        "Key Responsibilities\n"
+        "• Develop cybersecurity service packages, assessment methodologies, delivery processes and customer reports.\n"
+        "• Conduct and coordinate VAPT for web applications, APIs, networks and cloud environments.\n"
+        "• Assess security controls, explain business risks and recommend practical remediation measures.\n"
+        "• Support security audits, risk assessments and compliance readiness engagements.\n"
+        "• Select and integrate suitable security tools; build scripts, automation and reporting dashboards to improve delivery.\n"
+        "• Work with customers to understand requirements, conduct discovery calls and present relevant solutions.\n"
+        "• Prepare technical proposals, scopes of work, effort estimates and pricing inputs.\n"
+        "• Deliver demonstrations and proof-of-concept engagements, handle technical objections and support deal closure.\n"
+        "• Coordinate specialist resources for advanced red teaming, audits or other engagements.\n"
+        "• Ensure all security testing follows written customer authorisation, agreed scope and appropriate data-handling practices.\n\n"
+        "Required Skills and Experience\n"
+        "• Hands-on experience delivering VAPT or related cybersecurity assessments for business customers.\n"
+        "• Strong understanding of application and API security, networking, operating systems and common vulnerabilities.\n"
+        "• Practical experience with tools such as Burp Suite, Nmap, Nessus, OpenVAS or equivalent.\n"
+        "• Working knowledge of AWS, Azure or Google Cloud security, including identity, access and configuration reviews.\n"
+        "• Familiarity with frameworks such as OWASP, ISO 27001, NIST and CIS Controls.\n"
+        "• Ability to produce clear reports covering findings, severity, business impact and remediation.\n"
+        "• Experience in customer discussions, technical presentations, solution scoping or presales.\n"
+        "• Strong communication, ownership and ability to work independently in a growing business.\n\n"
+        "Good to Have\n"
+        "• Experience with red teaming, security awareness platforms or phishing simulation programmes.\n"
+        "• Exposure to SIEM, endpoint security, incident response or managed security services.\n"
+        "• Python, Bash or PowerShell scripting and experience using AI tools to improve security workflows.\n"
+        "• Experience supporting Indian or international compliance requirements and customer security questionnaires.\n"
+        "• Relevant certifications such as OSCP, PNPT, eJPT, CEH, cloud security certifications or ISO 27001 Lead Auditor.\n"
+        "• Previous experience helping a cybersecurity company develop offerings and acquire customers.\n\n"
+        "Qualifications\n"
+        "BE/BTech, BSc, BCA, MCA or a related qualification. Candidates with strong practical experience and demonstrable projects will also be considered.\n\n"
+        "What Success Looks Like\n"
+        "Clearly defined service offerings and repeatable delivery processes; successful customer pilots and assessments with actionable findings; effective proposals and demonstrations that convert opportunities into customers; and quality delivery that supports repeat business and referrals.\n\n"
         "How to Apply\n"
-        "Send your resume along with links to 1–3 projects (GitHub, live demo, video walkthrough, or portfolio). For each project, briefly state the problem solved, the AI tools you used, what actually works, and what you personally built. Shortlisted candidates may be asked to demonstrate or extend one of their projects in a practical discussion."
+        "Share your CV with the person who shared this opening, along with a brief description of cybersecurity projects delivered, your contribution to customer proposals or sales, notice period and expected CTC. Sanitised sample reports or demonstrations of relevant work are welcome. Please do not share confidential customer information."
     )
 
 
@@ -163,7 +176,7 @@ def create_interview():
             "error": "This email address has already been used for an interview. Each candidate may only interview once."
         }), 400
 
-    # Target job title defaults to 'AI developer'
+    # Target job title defaults to 'Cybersecurity Solutions Lead'
     job_title = request.form.get("job_title", "").strip() or FIXED_JOB_TITLE
     try:
         duration = int(request.form.get("duration_minutes", 15))
@@ -197,7 +210,7 @@ def create_interview():
     except DocumentParsingError as dpe:
         return jsonify({"error": f"Resume extraction error: {str(dpe)}"}), 422
 
-    # Job description: Fixed from AI_Application_Developer_JD.docx unless custom passed
+    # Job description: Fixed from Cybersecurity_Solutions_Lead_JD.docx unless custom passed
     custom_jd = request.form.get("jd_text", "").strip()
     jd_file = request.files.get("jd_file")
     if jd_file and jd_file.filename:

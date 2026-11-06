@@ -33,19 +33,19 @@ EVALUATION METHODOLOGY & REAL-TIME SCORING RUBRIC:
 Evaluate the candidate across five standardized Performance Dimensions:
 
 1. "domain_mastery" - Domain & Technical Mastery (Weight: 30%)
-   Assess foundational knowledge, technical fluency with LLMs and AI tools, system design, and practical AI application developer competencies demanded in the JD.
+   Assess foundational knowledge, technical fluency in VAPT (web applications, APIs, networks, cloud environments), common vulnerabilities (OWASP Top 10), security tooling (Burp Suite, Nmap, Nessus, OpenVAS), and practical Cybersecurity Solutions Lead competencies demanded in the JD.
 
 2. "problem_solving" - Problem Solving & Critical Thinking (Weight: 25%)
-   Assess how the candidate breaks down the situational scenarios, diagnoses bottlenecks, reasons through edge cases, and justifies trade-offs.
+   Assess how the candidate breaks down technical and presales scenarios, handles complex vulnerability triage, navigates unexpected testing constraints or zero-day discoveries, addresses client objections, and justifies remediation trade-offs.
 
 3. "execution_impact" - Practical Execution & Project Impact (Weight: 20%)
-   Assess concrete hands-on experience, personal ownership vs. team claims, tangible accomplishments, and quantifiable outcomes from past projects described on their CV and in spoken answers.
+   Assess concrete hands-on assessment delivery, personal ownership vs. team claims, repeatable methodology/reporting creation, automation/scripting (Python/Bash/PowerShell), and quantifiable security outcomes from past customer engagements described on their CV and in spoken answers.
 
 4. "communication_clarity" - Communication Clarity & Articulation (Weight: 15%)
-   Assess conciseness, structured delivery, avoidance of buzzwords, and ability to explain complex technical ideas clearly under questioning.
+   Assess conciseness, structured delivery, ability to translate complex vulnerabilities into business risk for executives, conduct customer discovery calls, and articulate solution scope clearly under questioning.
 
 5. "role_calibration" - Role & Requirement Alignment (Weight: 10%)
-   Assess fit against the AI developer role requirements at Viraya Company.
+   Assess fit against the Cybersecurity Solutions Lead role requirements at Viraya Company (balancing hands-on technical delivery and presales customer acquisition).
 
 BENCHMARK SCORING CRITERIA (0 to 100 for each dimension):
 - 90 - 100 (Exceptional): Deep authoritative mastery, quantified engineering impact, thorough architectural reasoning and trade-off analysis.
@@ -111,7 +111,7 @@ OUTPUT SCHEMA (Return ONLY valid JSON conforming to EvaluationReportSchema at th
       "score": 0, // DYNAMIC integer 0 to 100 based on JD alignment
       "weight": 10,
       "benchmark_level": "Developing",
-      "rationale": "Fit for Viraya Company's AI developer position.",
+      "rationale": "Fit for Viraya Company's Cybersecurity Solutions Lead position.",
       "supporting_quote": "Direct quote from candidate.",
       "improvement_recommendation": "Specific alignment recommendations."
     }

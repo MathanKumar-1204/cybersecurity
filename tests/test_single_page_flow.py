@@ -11,7 +11,7 @@ def test_landing_page_accessible_without_login(unauth_client):
     assert res.status_code == 200
     html = res.get_data(as_text=True)
     assert "Viraya Company's Interview AI Bot" in html
-    assert "AI developer" in html
+    assert "Cybersecurity Solutions Lead" in html
     assert 'name="candidate_name"' in html
     assert 'name="candidate_email"' in html
     assert 'name="resume_file"' in html
@@ -39,7 +39,7 @@ def test_captcha_refresh_and_verification(unauth_client, sample_pdf_bytes):
     fail_res = unauth_client.post("/api/interviews", data={
         "candidate_name": "Captcha Tester",
         "candidate_email": "captcha_fail@example.com",
-        "job_title": "AI developer",
+        "job_title": "Cybersecurity Solutions Lead",
         "captcha": "wrong_9999",
         "resume_file": resume_file
     }, content_type="multipart/form-data")
@@ -52,7 +52,7 @@ def test_captcha_refresh_and_verification(unauth_client, sample_pdf_bytes):
     ok_res = unauth_client.post("/api/interviews", data={
         "candidate_name": "Captcha Tester",
         "candidate_email": "captcha_ok@example.com",
-        "job_title": "AI developer",
+        "job_title": "Cybersecurity Solutions Lead",
         "captcha": expected_answer,
         "resume_file": resume_file_valid
     }, content_type="multipart/form-data")
@@ -75,7 +75,7 @@ def test_one_time_email_restriction(unauth_client, sample_pdf_bytes):
     res1 = unauth_client.post("/api/interviews", data={
         "candidate_name": "First Attempt Applicant",
         "candidate_email": email,
-        "job_title": "AI developer",
+        "job_title": "Cybersecurity Solutions Lead",
         "resume_file": resume_1
     }, content_type="multipart/form-data")
     assert res1.status_code == 201
@@ -92,7 +92,7 @@ def test_one_time_email_restriction(unauth_client, sample_pdf_bytes):
     res2 = unauth_client.post("/api/interviews", data={
         "candidate_name": "Second Attempt Applicant",
         "candidate_email": email,
-        "job_title": "AI developer",
+        "job_title": "Cybersecurity Solutions Lead",
         "resume_file": resume_2
     }, content_type="multipart/form-data")
 
@@ -108,7 +108,7 @@ def test_live_interview_page_accessible_without_login(unauth_client, sample_pdf_
     create_res = unauth_client.post("/api/interviews", data={
         "candidate_name": "Direct Live Candidate",
         "candidate_email": "direct_live@viraya.com",
-        "job_title": "AI developer",
+        "job_title": "Cybersecurity Solutions Lead",
         "resume_file": resume_file
     }, content_type="multipart/form-data")
     assert create_res.status_code == 201
@@ -127,8 +127,8 @@ def test_completed_page_shows_exact_required_message_and_no_scores(unauth_client
         interview = Interview(
             candidate_name="Finalized Candidate",
             candidate_email="finalized@example.com",
-            job_title="AI developer",
-            jd_text="AI developer JD",
+            job_title="Cybersecurity Solutions Lead",
+            jd_text="Cybersecurity Solutions Lead JD",
             resume_text="Resume text",
             status=InterviewStatus.COMPLETED
         )
@@ -157,8 +157,8 @@ def test_report_route_restricted_to_admin(unauth_client, app):
         interview = Interview(
             candidate_name="Secret Score Candidate",
             candidate_email="secret@example.com",
-            job_title="AI developer",
-            jd_text="AI developer JD",
+            job_title="Cybersecurity Solutions Lead",
+            jd_text="Cybersecurity Solutions Lead JD",
             resume_text="Resume text",
             status=InterviewStatus.COMPLETED
         )

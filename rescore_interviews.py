@@ -142,11 +142,11 @@ SCORING METHODOLOGY & CRITICAL INSTRUCTIONS:
    * 70 - 84 (Proficient / Solid Hire): Clear, relevant answers with concrete technical examples and demonstrated hands-on experience.
    * 85 - 98 (Exceptional / Authoritative): Deep mastery, authoritative architecture breakdowns, quantified engineering impact, and proactive trade-off analysis.
 3. Score each of the five standard performance dimensions independently (integers 0 to 100):
-   - domain_mastery (Weight 30%): Deep technical grasp of LLMs, Python, prompt engineering, AI developer tooling, full-stack concepts.
-   - problem_solving (Weight 25%): Practical reasoning through situational dilemmas, debugging, edge cases, trade-offs.
-   - execution_impact (Weight 20%): Tangible hands-on contributions, specific personal project ownership rather than vague team claims.
-   - communication_clarity (Weight 15%): Clarity, conciseness, structured articulation, avoidance of stalling/filler.
-   - role_calibration (Weight 10%): Direct alignment with the AI developer requirements at Viraya Company.
+   - domain_mastery (Weight 30%): Deep technical grasp of VAPT, application/network security, cloud security, OWASP, and security tools.
+   - problem_solving (Weight 25%): Practical reasoning through situational dilemmas, vulnerability triage, handling edge cases and trade-offs.
+   - execution_impact (Weight 20%): Tangible hands-on contributions, specific personal assessment ownership rather than vague team claims.
+   - communication_clarity (Weight 15%): Clarity, conciseness, structured articulation, presales communication, avoidance of stalling/filler.
+   - role_calibration (Weight 10%): Direct alignment with the Cybersecurity Solutions Lead requirements at Viraya Company.
 
 Return ONLY a valid JSON object matching this exact schema:
 {{
@@ -297,14 +297,14 @@ def main():
         print(f"[{idx}/{len(interview_ids)}] Processing Interview ID: {interview_id}...")
 
         # Find interview document
-        doc = db.interviews.find_one({"$or": [{"_id": interview_id}, {"id": interview_id}]})
+        doc = db[os.getenv("MONGO_INTERVIEWS_COLLECTION", "cybersecurity_interviews")].find_one({"$or": [{"_id": interview_id}, {"id": interview_id}]})
         if not doc:
             print(f"  [Skip] Interview {interview_id} not found in MongoDB.")
             fail_count += 1
             continue
 
         candidate_name = doc.get("candidate_name", "Unknown Candidate")
-        job_title = doc.get("job_title", "AI developer")
+        job_title = doc.get("job_title", "Cybersecurity Solutions Lead")
         report = doc.get("report")
 
         if not report:
@@ -377,7 +377,7 @@ def main():
 
             # 5. Persist strictly the updated scores to MongoDB
             if not args.dry_run:
-                db.interviews.update_one(
+                db[os.getenv("MONGO_INTERVIEWS_COLLECTION", "cybersecurity_interviews")].update_one(
                     {"_id": doc["_id"]},
                     {
                         "$set": {
